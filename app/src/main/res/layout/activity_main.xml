@@ -81,6 +81,17 @@
                 app:layout_constraintStart_toStartOf="@id/screen_Layout"
                 app:layout_constraintTop_toBottomOf="@+id/company_name" />
 
+            <ProgressBar
+                android:id="@+id/company_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="@+id/company_details"
+                app:layout_constraintBottom_toBottomOf="@+id/company_details"
+                app:layout_constraintEnd_toEndOf="@+id/company_details"
+                app:layout_constraintStart_toStartOf="@+id/company_details" />
+
+
             <TextView
                 android:id="@+id/company_details"
                 android:layout_width="match_parent"
@@ -102,6 +113,15 @@
                 app:layout_constraintEnd_toEndOf="@id/screen_Layout"
                 app:layout_constraintStart_toStartOf="@id/screen_Layout"
                 app:layout_constraintTop_toBottomOf="@+id/company_details" />
+            <ProgressBar
+                android:id="@+id/launch_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="@+id/launch_list"
+                app:layout_constraintBottom_toBottomOf="@+id/launch_list"
+                app:layout_constraintEnd_toEndOf="@+id/launch_list"
+                app:layout_constraintStart_toStartOf="@+id/launch_list" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/launch_list"

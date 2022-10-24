@@ -9,7 +9,7 @@ import com.mindera.rocketscience.databinding.LaunchViewItemBinding
 
 class LaunchItemViewHolder(private val binding : LaunchViewItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(launchDTOItem: LaunchDTOItem){
+    fun bind(launchDTOItem: LaunchDTOItem, onLaunchClickListener: OnLaunchClickListener){
         with(binding){
             if(launchDTOItem.launch_success){
                 launchState.setImageResource(R.drawable.ic_baseline_check_24)
