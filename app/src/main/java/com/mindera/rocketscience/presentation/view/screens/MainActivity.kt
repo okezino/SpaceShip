@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity(), OnLaunchClickListener {
                     with(binding) {
                         val companyInfo = resource.data!!
                         companyProgress.visibility = View.GONE
+                        companyDetails.visibility = View.VISIBLE
                         companyDetails.text = getString(
                             R.string.company_detail,
                             companyInfo.name,
@@ -78,7 +79,11 @@ class MainActivity : AppCompatActivity(), OnLaunchClickListener {
                 }
 
                 is Resource.Error -> {
+                    val error = resource.messages
                     binding.companyProgress.visibility = View.GONE
+                    binding.companyDetails.visibility = View.VISIBLE
+                    binding.companyDetails.text = error
+
 
                 }
 
@@ -104,6 +109,8 @@ class MainActivity : AppCompatActivity(), OnLaunchClickListener {
 
                 is Resource.Error -> {
                     binding.launchProgress.visibility = View.GONE
+                    binding.launchDetailsError.visibility = View.VISIBLE
+                    binding.launchDetailsError.text = resource.messages
                 }
 
             }
