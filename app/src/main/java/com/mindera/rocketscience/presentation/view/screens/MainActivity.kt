@@ -3,8 +3,8 @@ package com.mindera.rocketscience.presentation.view.screens
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.webkit.WebView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mindera.rocketscience.R
@@ -104,12 +104,39 @@ class MainActivity : AppCompatActivity(), OnLaunchClickListener {
         }
     }
 
+
+
     override fun onItemClick(launchDTOItem: LaunchDTOItem) {
         val wikiLoadUrl = launchDTOItem.links.wikipedia
         val youtubeLoadUrl = launchDTOItem.links.video_link
+
+        val options = arrayOf("Wikipedia", "Youtube")
+        val mBuilder = AlertDialog.Builder(this@MainActivity)
+        mBuilder.setTitle("Choose the view")
+        mBuilder.setSingleChoiceItems(options, -1) { dialogInterface, i ->
+
+            dialogInterface.dismiss()
+            if(i == 0 ) {
+                launchWebView(wikiLoadUrl)
+            } else {
+                launchWebView(youtubeLoadUrl)
+            }
+        }
+
+        mBuilder.setNeutralButton("Cancel") { dialog, which ->
+            dialog.cancel()
+        }
+
+        val mDialog = mBuilder.create()
+        mDialog.show()
+
+    }
+
+    private fun launchWebView(url : String){
         val intent = Intent(this, WebViewActivity::class.java)
-        intent.putExtra(Constants.WEB_URL_CONST, youtubeLoadUrl)
+        intent.putExtra(Constants.WEB_URL_CONST, url)
         startActivity(intent)
+
     }
 
     override fun onDestroy() {
