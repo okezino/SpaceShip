@@ -7,46 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".presentation.view.screens.MainActivity">
 
-<!--    <com.google.android.material.appbar.AppBarLayout-->
-<!--        android:id="@+id/appBarLayout"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:theme="@style/Theme.MyApplication.AppBarOverlay"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textSize="30sp"-->
-<!--                android:text="Space X"-->
-<!--                android:textColor="@color/white" />-->
-<!--            -->
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-
-
-<!--&lt;!&ndash;        <androidx.appcompat.widget.Toolbar&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/toolbar"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:background="?attr/colorPrimary"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:popupTheme="@style/Theme.MyApplication.PopupOverlay" />&ndash;&gt;-->
-
-<!--    </com.google.android.material.appbar.AppBarLayout>-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/Theme.MyApplication.PopupOverlay" />
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout

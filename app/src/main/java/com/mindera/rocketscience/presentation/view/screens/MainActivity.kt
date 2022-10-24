@@ -2,6 +2,8 @@ package com.mindera.rocketscience.presentation.view.screens
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity(), OnLaunchClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setSupportActionBar(binding.toolbar)
         setContentView(binding.root)
         getNetworkData()
         observeNetworkData()
@@ -141,5 +144,20 @@ class MainActivity : AppCompatActivity(), OnLaunchClickListener {
 
     override fun onDestroy() {
         super.onDestroy()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.filter_menu,  menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_year -> {
+                // Action goes here
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
