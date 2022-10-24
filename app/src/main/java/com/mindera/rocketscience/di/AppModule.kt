@@ -4,8 +4,10 @@ import com.mindera.rocketscience.common.NetworkUtil.BASE_URL
 import com.mindera.rocketscience.data.network.service.MinderaApiService
 import com.mindera.rocketscience.data.repository.CompanyInfoRepositoryImp
 import com.mindera.rocketscience.data.repository.LaunchDetailsRepositoryImp
+import com.mindera.rocketscience.data.repository.SearchLaunchDetailsRepositoryImp
 import com.mindera.rocketscience.domain.repository.CompanyInfoRepository
 import com.mindera.rocketscience.domain.repository.LaunchDetailsRepository
+import com.mindera.rocketscience.domain.repository.SearchLaunchDetailsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,6 +46,12 @@ class AppModule {
     @Singleton
     fun provideLaunchDetailsRepository(minderaApiService: MinderaApiService) : LaunchDetailsRepository{
         return LaunchDetailsRepositoryImp(minderaApiService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSearchLaunchDetailsRepository(minderaApiService: MinderaApiService) : SearchLaunchDetailsRepository{
+        return SearchLaunchDetailsRepositoryImp(minderaApiService)
     }
 
     @Provides

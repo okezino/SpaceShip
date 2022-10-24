@@ -5,11 +5,11 @@ import com.mindera.rocketscience.common.Resource
 import com.mindera.rocketscience.data.model.LaunchDTOItem
 import com.mindera.rocketscience.data.network.service.MinderaApiService
 import com.mindera.rocketscience.domain.base.BaseRepositoryService
-import com.mindera.rocketscience.domain.repository.SearchLaunchDetails
+import com.mindera.rocketscience.domain.repository.SearchLaunchDetailsRepository
 import java.lang.Exception
 import javax.inject.Inject
 
-class SearchLaunchDetailsImp @Inject constructor(private val minderaApiService: MinderaApiService) : BaseRepositoryService(), SearchLaunchDetails{
+class SearchLaunchDetailsRepositoryImp @Inject constructor(private val minderaApiService: MinderaApiService) : BaseRepositoryService(), SearchLaunchDetailsRepository{
     override suspend fun getAllLaunchesByYear(year: String): Resource<List<LaunchDTOItem>> = executeRequest {
         try{
             val response = minderaApiService.getAllLaunchByYear(year)

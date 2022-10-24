@@ -157,6 +157,16 @@ class MainActivity : AppCompatActivity(), OnLaunchClickListener {
                 // Action goes here
                 true
             }
+
+            R.id.action_success -> {
+                mainActivityViewModel.getLaunchListByLaunchState(true)
+                true
+            }
+
+            R.id.action_failed -> {
+                mainActivityViewModel.getLaunchListByLaunchState(false)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
