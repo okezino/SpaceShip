@@ -2,6 +2,10 @@ package com.mindera.rocketscience.di
 
 import com.mindera.rocketscience.common.NetworkUtil.BASE_URL
 import com.mindera.rocketscience.data.network.service.MinderaApiService
+import com.mindera.rocketscience.data.repository.CompanyInfoRepositoryImp
+import com.mindera.rocketscience.data.repository.LaunchDetailsRepositoryImp
+import com.mindera.rocketscience.domain.repository.CompanyInfoRepository
+import com.mindera.rocketscience.domain.repository.LaunchDetailsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,5 +30,18 @@ class AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(MinderaApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCompanyInfoRepository(minderaApiService: MinderaApiService) : CompanyInfoRepository{
+        return CompanyInfoRepositoryImp(minderaApiService)
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideLaunchDetailsRepository(minderaApiService: MinderaApiService) : LaunchDetailsRepository{
+        return LaunchDetailsRepositoryImp(minderaApiService)
     }
 }

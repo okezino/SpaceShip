@@ -11,5 +11,5 @@ interface MinderaApiService {
     suspend fun getCompanyInfo() : CompanyInfoDTO
 
     @GET("launches")
-    suspend fun getAllLaunch() : LaunchDTO
+    suspend fun getAllLaunch() : List<LaunchDTOItem>
 }

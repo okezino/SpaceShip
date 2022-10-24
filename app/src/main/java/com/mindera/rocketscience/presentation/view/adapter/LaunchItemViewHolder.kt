@@ -18,13 +18,7 @@ class LaunchItemViewHolder(private val binding : LaunchViewItemBinding) : Recycl
             missionName.text = launchDTOItem.mission_name
             rocketName.text = "${launchDTOItem.rocket.rocket_name} / ${launchDTOItem.rocket.rocket_type}"
         }
-
-
-
-
-
     }
-
     companion object{
         fun from(parent: ViewGroup) : LaunchItemViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
