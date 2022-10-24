@@ -1,8 +1,10 @@
 package com.mindera.rocketscience.common
 
 import android.text.format.DateUtils
+import android.util.TimeUtils
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 object DateUtil {
 
@@ -21,5 +23,16 @@ object DateUtil {
     fun getTime(string: String): String {
         val date = SimpleDateFormat(DATE_TIME_FORMAT_24HR_PERIOD).parse(string)
         return SimpleDateFormat(TIME_FORMAT_12HR_PERIODS).format(date).toString()
+    }
+
+    fun dateDiff(date : String) : Long {
+       val time = Calendar.getInstance().time
+        val format = SimpleDateFormat(DATE_TIME_FORMAT_24HR_PERIOD)
+        val current = format.format(time)
+        val today = SimpleDateFormat(DATE_TIME_FORMAT_24HR_PERIOD).parse(current)
+        val diff = today.time - SimpleDateFormat(DATE_TIME_FORMAT_24HR_PERIOD ).parse(date).time
+
+      return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)
+
     }
 }

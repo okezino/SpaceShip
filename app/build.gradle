@@ -68,4 +68,8 @@ dependencies {
     //kotlin flow
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
     implementation 'com.google.android.material:material:1.6.1'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+
 }
