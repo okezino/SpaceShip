@@ -1,11 +1,14 @@
 package com.mindera.rocketscience.presentation.view.screens
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mindera.rocketscience.R
+import com.mindera.rocketscience.common.Constants
 import com.mindera.rocketscience.common.Resource
 import com.mindera.rocketscience.data.model.LaunchDTOItem
 import com.mindera.rocketscience.databinding.ActivityMainBinding
@@ -21,7 +24,7 @@ class MainActivity : AppCompatActivity(), OnLaunchClickListener {
     private val mainActivityViewModel: MainActivityViewModel by viewModels()
 
     private val launchAdapter: LaunchItemAdapter by lazy {
-        LaunchItemAdapter(this)
+        LaunchItemAdapter(this, this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,6 +105,14 @@ class MainActivity : AppCompatActivity(), OnLaunchClickListener {
     }
 
     override fun onItemClick(launchDTOItem: LaunchDTOItem) {
+        val wikiLoadUrl = launchDTOItem.links.wikipedia
+        val youtubeLoadUrl = launchDTOItem.links.video_link
+        val intent = Intent(this, WebViewActivity::class.java)
+        intent.putExtra(Constants.WEB_URL_CONST, youtubeLoadUrl)
+        startActivity(intent)
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }
