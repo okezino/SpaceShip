@@ -9,4 +9,11 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="company">COMPANY</string>
+    <string name="company_detail">Clone GIT repository with the source code of this project and edit it with your favourite IDE</string>
+    <string name="launches">LAUNCHES</string>
+    <string name="days_since_from_now">Days{since/from} now:</string>
+    <string name="rocket">Rocket:</string>
+    <string name="date_time">Date/Time :</string>
+    <string name="mission">Mission :</string>
 </resources>
