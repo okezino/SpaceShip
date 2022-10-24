@@ -11,7 +11,7 @@
         android:title="Launch" >
 
         <menu>
-            <item android:id="@+id/action_year"
+            <item android:id="@+id/year_launch"
                 android:title="Year" />
             <item
                 android:id="@+id/launch"

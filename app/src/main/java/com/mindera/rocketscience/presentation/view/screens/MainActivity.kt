@@ -1,10 +1,13 @@
 package com.mindera.rocketscience.presentation.view.screens
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -153,11 +156,6 @@ class MainActivity : AppCompatActivity(), OnLaunchClickListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_year -> {
-                // Action goes here
-                true
-            }
-
             R.id.action_success -> {
                 mainActivityViewModel.getLaunchListByLaunchState(true)
                 true
@@ -167,7 +165,39 @@ class MainActivity : AppCompatActivity(), OnLaunchClickListener {
                 mainActivityViewModel.getLaunchListByLaunchState(false)
                 true
             }
+
+            R.id.year_launch ->{
+                showDialog()
+                true
+            }
+
+            R.id.action_asc -> {
+                mainActivityViewModel.sortByAscAndDesc(true)
+                true
+            }
+
+            R.id.action_desc -> {
+                mainActivityViewModel.sortByAscAndDesc(false)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun showDialog(){
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setTitle("Enter Launch Year")
+        val input = EditText(this)
+        input.setHint("Enter  Year")
+        input.inputType = InputType.TYPE_CLASS_NUMBER
+        builder.setView(input)
+
+        builder.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
+            var year = input.text.toString()
+            mainActivityViewModel.getLaunchListByYear(year)
+        })
+        builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
+
+        builder.show()
     }
 }

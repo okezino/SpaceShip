@@ -25,6 +25,8 @@ class MainActivityViewModel @Inject constructor(
     private val getLaunchDetailsByYear: GetLaunchDetailsByYear
 ) : ViewModel(){
 
+    private var sort : Boolean = true
+
     private var _launchListData = MutableLiveData<Resource<List<LaunchDTOItem>>>()
     val launchListData: LiveData<Resource<List<LaunchDTOItem>>> get() = _launchListData
 
@@ -56,6 +58,14 @@ class MainActivityViewModel @Inject constructor(
         _companyData.value = Resource.Loading()
         viewModelScope.launch(Dispatchers.IO) {
             _companyData.postValue(getCompanyInfo.execute(Unit).data)
+        }
+    }
+
+    fun sortByAscAndDesc(orderly : Boolean){
+        if(orderly != sort){
+            val list = _launchListData.value
+            _launchListData.value = list?.data?.let { Resource.Success(it.reversed()) }
+            sort = orderly
         }
     }
 

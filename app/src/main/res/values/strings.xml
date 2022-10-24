@@ -19,4 +19,6 @@
     <string name="rocket_name">%1$s / %2$s</string>
     <string name="day_duration">today - %1$s</string>
     <string name="date_and_time">%1$s at %2$s</string>
+    <string name="enter_year">Enter Year</string>
+    <string name="submit_year">Submit Year</string>
 </resources>
