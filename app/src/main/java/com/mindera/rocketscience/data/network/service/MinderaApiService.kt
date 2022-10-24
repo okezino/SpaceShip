@@ -7,9 +7,9 @@ import retrofit2.http.GET
 
 interface MinderaApiService {
 
-    @GET()
+    @GET("info")
     suspend fun getCompanyInfo() : CompanyInfoDTO
 
-    @GET()
+    @GET("launches")
     suspend fun getAllLaunch() : LaunchDTO
 }
